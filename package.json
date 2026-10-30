@@ -1,0 +1,16 @@
+{
+  "name": "drinkit-auth-demo",
+  "version": "1.0.0",
+  "description": "Drinkit storefront with OTP login and SQLite user storage",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "axios": "^1.21.0",
+    "dotenv": "^18.0.9",
+    "express": "^4.19.2",
+    "razorpay": "^2.9.4",
+    "sqlite3": "^5.1.7"
+  }
+}

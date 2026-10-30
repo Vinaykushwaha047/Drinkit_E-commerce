@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10,000+ Wine delivered to your doorstep | Drinkit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="./favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand-group">
+        <a href="#" class="brand-logo" id="brandLogo">drink<span>it</span></a>
+        <div class="delivery-widget" id="deliveryWidget">
+          <span class="delivery-time">Delivery in 15 minutes</span>
+          <span class="delivery-address">Unit 608, TOWER A, Unitech B... ▾</span>
+        </div>
+      </div>
+
+      <!-- Live Search Bar -->
+      <div class="search-container">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="globalSearchInput" class="search-input-box" placeholder='Search "paneer"'>
+      </div>
+
+      <div class="nav-actions">
+        <div class="account-wrapper">
+          <button class="btn-login" id="openLoginBtn">Login</button>
+          <div class="account-menu hidden" id="accountMenu" aria-live="polite">
+            <div class="account-menu-header">
+              <span>My Account</span>
+            </div>
+            <button class="account-menu-item" id="changeNameBtn" type="button">Change Name</button>
+            <button class="account-menu-item" id="logoutBtn" type="button">Logout</button>
+          </div>
+        </div>
+        <button class="btn-cart" id="openCartBtn">
+          <span>🛒</span>
+          <span id="navCartLabel";">My Cart</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-wrapper">
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <div class="hero-content">
+        <a href="https://blinkit.com/dc/?collection_uuid=736e6fc2-8c33-4c35-9821-d325509aa0e5">
+        <img src="./images/banner.jpeg" alt="Stock upon daily usiensis">
+        </a>
+      </div>
+      
+    </section>
+
+    <!-- Promo Cards -->
+    <section class="promo-cards-grid">
+      <div class="promo-card c1">
+        <div>
+          <a href="https://blinkit.com/cn/null/cid/287/7275">
+          <img class="promo-btn" src="./images/beer.jpg" alt="" style="height: 100%; width: 100%;">
+          </a>
+        </div>
+      </div>
+
+      <div class="promo-card c2">
+        <div>
+          <a href="https://blinkit.com/cn/null/cid/5/133">
+          <img src="./images/vodka.jpg" alt="" style="height: 100%; width: 100%;">
+          </a>
+        </div>
+      </div>
+
+      <div class="promo-card c3">
+        <div>
+          <a href="https://blinkit.com/cn/null/cid/7/1000">
+          <img src="./images/wihskey.jpg" alt="" style="height: 100%; width: 100%;">
+          </a>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- Product Shelf Area -->
+    <div class="products-shelf-header">
+      <h2 id="currentCategoryHeading">Beer</h2>
+      <button class="see-all-btn" id="seeAllProductsBtn" data-category="Beer" type="button" aria-pressed="false">See all</button>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+
+    <!-- Vodka section -->
+    <section class="vodka-section" aria-labelledby="vodkaSectionHeading">
+      <div class="products-shelf-header">
+        <h2 id="vodkaSectionHeading">Vodka</h2>
+        <button class="see-all-btn" id="seeAllVodkaBtn" data-category="Vodka" type="button" aria-pressed="false">See all</button>
+      </div>
+      <div class="products-grid" id="vodkaProductsGrid"></div>
+    </section>
+
+    <!-- Whisky section -->
+    <section class="whisky-section" aria-labelledby="whiskySectionHeading">
+      <div class="products-shelf-header">
+        <h2 id="whiskySectionHeading">Whisky</h2>
+        <button class="see-all-btn" id="seeAllWhiskyBtn" data-category="Whisky" type="button" aria-pressed="false">See all</button>
+      </div>
+      <div class="products-grid" id="whiskyProductsGrid"></div>
+    </section>
+
+    <!-- Rum section -->
+    <section class="rum-section" aria-labelledby="rumSectionHeading">
+      <div class="products-shelf-header">
+        <h2 id="rumSectionHeading">Rum</h2>
+        <button class="see-all-btn" id="seeAllRumBtn" data-category="Rum" type="button" aria-pressed="false">See all</button>
+      </div>
+      <div class="products-grid" id="rumProductsGrid"></div>
+    </section>
+  </main>
+
+  <!-- Login Modal -->
+  <div class="modal-backdrop" id="loginModalBackdrop">
+    <div class="login-card">
+      <button class="modal-back-btn" id="closeLoginBtn" aria-label="Close login">←</button>
+      <div class="login-logo-pill">drinkit</div>
+
+      <div id="phoneStep" class="auth-step">
+        <h2>India's last minute app</h2>
+        <p class="sub">Log in or Sign up</p>
+        <div class="phone-input-group">
+          <span class="country-code">+91</span>
+          <input id="phoneNumberInput" type="tel" class="phone-number-input" placeholder="Enter mobile number" maxlength="10" inputmode="numeric" autocomplete="tel">
+        </div>
+        <button class="btn-continue-login" id="continueLoginBtn" type="button">Continue</button>
+      </div>
+
+      <div id="otpStep" class="auth-step hidden">
+        <h2>Verify your number</h2>
+        <p class="sub">OTP sent to <strong id="otpPhoneLabel">+91</strong></p>
+        <div class="otp-input-group">
+          <input id="otpCodeInput" type="text" class="otp-code-input" placeholder="Enter 6-digit OTP" maxlength="6" inputmode="numeric" autocomplete="one-time-code">
+        </div>
+        <div class="name-input-group">
+          <input id="fullNameInput" type="text" class="full-name-input" placeholder="Enter your name" maxlength="40" autocomplete="name">
+        </div>
+        <button class="btn-continue-login" id="verifyOtpBtn" type="button">Verify OTP</button>
+        <div class="otp-actions">
+          <button class="btn-text-link" id="resendOtpBtn" type="button">Resend OTP</button>
+        </div>
+      </div>
+
+      <div id="authStatus" class="auth-status" aria-live="polite"></div>
+
+      <p class="login-terms">
+        By continuing, you agree to our <a href="#">Terms of service</a> & <a href="#">Privacy policy</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Cart Slide-Out Drawer -->
+  <div class="cart-drawer-backdrop" id="cartBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h3>My Cart (<span id="cartDrawerQty">0</span>)</h3>
+      <button class="close-cart-btn" id="closeCartBtn">✕</button>
+    </div>
+    <div class="cart-drawer-body" id="cartDrawerBody"></div>
+    <div class="cart-drawer-footer" id="cartDrawerFooter">
+      <button class="btn-pay-now" id="payNowBtn">
+        <span>Proceed to Pay</span>
+        <span id="cartTotalPay">₹0</span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="payment-modal-backdrop" id="paymentModalBackdrop">
+    <div class="payment-modal">
+      <div class="payment-modal-header">
+        <h3>Select Payment</h3>
+        <button class="close-payment-btn" id="closePaymentBtn" aria-label="Close payment">✕</button>
+      </div>
+
+      <div class="payment-options">
+        <button class="payment-option active" type="button" data-method="UPI">
+          <span class="payment-icon">📱</span>
+          <span>UPI QR</span>
+        </button>
+        <button class="payment-option" type="button" data-method="Card">
+          <span class="payment-icon">💳</span>
+          <span>Debit / Credit Card</span>
+        </button>
+        <button class="payment-option" type="button" data-method="Cash">
+          <span class="payment-icon">💵</span>
+          <span>Cash on Delivery</span>
+        </button>
+      </div>
+
+      <div class="payment-summary">
+        <div class="payment-summary-row">
+          <span>Total</span>
+          <strong id="paymentTotalLabel">₹0</strong>
+        </div>
+      </div>
+
+      <div class="upi-qr-box" id="upiQrBox" aria-live="polite">
+        <img id="upiQrImage" alt="UPI payment QR code" />
+        <div class="upi-id-text">UPI ID: <strong>drinkit@upi</strong></div>
+      </div>
+
+      <button class="btn-confirm-payment" id="confirmPaymentBtn" type="button">Pay Now</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Links Column -->
+        <div>
+          <div class="footer-col-title">Useful Links</div>
+          <div class="footer-links-3col">
+            <a href="https://blinkit.com/blog/">Blog</a><a href="https://blinkit.com/privacy">Privacy</a><a href="https://blinkit.com/terms">Terms</a>
+            <a href="https://blinkit.com/faq">FAQs</a><a href="https://blinkit.com/security">Security</a><a href="https://blinkit.com/contact">Contact</a>
+            <a href="https://blinkit.com/partner">Partner</a><a href="https://partners.blinkit.com/">Franchise</a><a href="https://seller.blinkit.com/">Seller</a>
+            <a href="https://blinkit.com/warehouse-partner">Warehouse</a><a href="https://blinkit.com/delivery">Deliver</a><a href="https://blinkit.com/resources">Resources</a>
+            <a href="https://blinkit.com/recipes">Recipes</a><a href="https://bistro.blinkit.com/">Bistro</a><a href="https://www.district.in/">District</a>
+            <a href="https://blinkit.com/ambulance">Blinkit Ambulance</a><a href="https://www.feedingindia.org/?utm_source=blinkit&source=blinkit">Feeding India</a>
+          </div>
+        </div>
+
+        <!-- Categories Column -->
+        <div>
+          <div class="footer-col-title">Categories <span class="see-all">see all</span></div>
+          <div class="footer-cat-grid">
+            <a href="#">Bath & Body</a><a href="#">Beauty & Cosmetics</a><a href="#">Health & Pharma</a>
+            <a href="#">Atta, Rice & Dal</a><a href="#">Bakery & Biscuits</a><a href="#">Electronics & Appliances</a>
+            <a href="#">Drinks & Juices</a><a href="#">Sauces & Spreads</a><a href="#">Home & Lifestyle</a>
+            <a href="#">Stationery & Games</a><a href="#">Rakhi Gifts</a><a href="#">Hair</a>
+            <a href="#">Feminine Hygiene</a><a href="#">Sexual Wellness</a><a href="#">Oil, Ghee & Masala</a>
+            <a href="#">Dry Fruits & Cereals</a><a href="#">Chips & Namkeen</a><a href="#">Tea, Coffee & Milk Drinks</a>
+            <a href="#">Paan Corner</a><a href="#">Cleaners & Repellents</a><a href="#">Print Store</a>
+            <a href="#">Skin & Face</a><a href="#">Baby Care</a><a href="#">Vegetables & Fruits</a>
+            <a href="#">Dairy, Bread & Eggs</a><a href="#">Chicken, Meat & Fish</a><a href="#">Sweets & Chocolates</a>
+            <a href="#">Instant Food</a><a href="#">Ice Creams & More</a><a href="#">Electronics</a>
+            <a href="#">E-Gift Cards</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copy">© Drinkit Commerce Private Limited, 2016-2026</div>
+        <div class="app-badges">
+          <span class="download-label">Download App</span>
+          <div class="app-btn">
+            <a href="https://apps.apple.com/in/app/blinkit-groceries-more/id960335206">
+            <img src="./Images/applestore.jpg" alt="" class="app-source">
+            </a>
+          </div>
+          <div class="app-btn">
+            <a href="https://play.google.com/store/apps/details?id=com.grofers.customerapp&hl=en_IN&gl=US&pli=1">
+            <img src="./Images/playstore.jpg" alt="" class="app-source">
+            </a>
+          </div>
+        </div>
+       <div class="social-icons">
+  <a href="https://www.facebook.com/blinkit.india/" target="_blank">
+    <i class="fab fa-facebook"></i>
+  </a>
+ <a href="https://x.com/letsblinkit/" target="_blank">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="https://www.instagram.com/letsblinkit/" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.linkedin.com/company/letsblinkit/home/" target="_blank">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+  <a href="https://www.threads.com/login/?next=https%3A%2F%2Fwww.threads.com%2F%40letsblinkit%2F" target="_blank">
+  <span class="threads-text-icon">@</span>
+</a>
+  
+</div>
+      </div>
+      <p class="disclaimer-text">
+        "Drinkit" is owned & managed by "Drinkit Commerce Private Limited" and is not related, linked or interconnected in whatsoever manner or nature, to "GROFFR.COM" which is a real estate services business operated by "Redstone Consultancy Services Private Limited".
+      </p>
+    </div>
+
+    <div class="footer-bottom-bar2">
+        <p>© 2026 Vinay Kushwaha | All Rights Reserved</p>
+    </div>
+
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+<img src="" alt="" style="object-fit: cover;">
